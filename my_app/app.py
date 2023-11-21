@@ -3,6 +3,7 @@ from flask import Flask
 app = Flask(__name__)
 
 
+
 @app.route('/api/v1/hello-world-<int:variant_number>')
 def hello_world(variant_number):
     response_text = f'Hello World {variant_number}'
