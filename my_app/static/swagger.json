@@ -1,0 +1,288 @@
+"swagger": "2.0"
+info:
+  title: "Playlist API"
+  description: "API for managing users, playlists, playlist access, playlist songs, and songs."
+  version: "1.0"
+
+basePath: "/"
+
+paths:
+  /user:
+    get:
+      summary: "Get all users"
+      responses:
+        200:
+          description: "List of users"
+    post:
+      summary: "Create a new user"
+      parameters:
+        - in: body
+          name: user
+          description: "User object that needs to be added"
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+              name:
+                type: string
+      responses:
+        200:
+          description: "User created successfully"
+
+  /user/{user_id}:
+    get:
+      summary: "Get a user by ID"
+      parameters:
+        - name: "user_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "User details"
+    put:
+      summary: "Update a user by ID"
+      parameters:
+        - name: "user_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "User updated successfully"
+    delete:
+      summary: "Delete a user by ID"
+      parameters:
+        - name: "user_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "User deleted successfully"
+
+  /playlist:
+    get:
+      summary: "Get all playlists"
+      responses:
+        200:
+          description: "List of playlists"
+    post:
+      summary: "Create a new playlist"
+      parameters:
+        - in: body
+          name: playlist
+          description: "Playlist object that needs to be added"
+          required: true
+          schema:
+            type: object
+            properties:
+              playlist_name:
+                type: string
+              is_public:
+                type: boolean
+              owner_id:
+                type: string
+      responses:
+        200:
+          description: "Playlist created successfully"
+
+  /playlist/{playlist_id}:
+    get:
+      summary: "Get a playlist by ID"
+      parameters:
+        - name: "playlist_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Playlist details"
+    put:
+      summary: "Update a playlist by ID"
+      parameters:
+        - name: "playlist_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Playlist updated successfully"
+    delete:
+      summary: "Delete a playlist by ID"
+      parameters:
+        - name: "playlist_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Playlist deleted successfully"
+
+  /playlistaccess:
+    get:
+      summary: "Get all playlist access"
+      responses:
+        200:
+          description: "List of playlist access"
+    post:
+      summary: "Create a new playlist access"
+      parameters:
+        - in: body
+          name: playlist_access
+          description: "Playlist access object that needs to be added"
+          required: true
+          schema:
+            type: object
+            properties:
+              playlist_id:
+                type: string
+              user_id:
+                type: string
+      responses:
+        200:
+          description: "Playlist access created successfully"
+
+  /playlistaccess/{playlistaccess_id}:
+    get:
+      summary: "Get playlist access by ID"
+      parameters:
+        - name: "playlistaccess_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Playlist access details"
+    put:
+      summary: "Update playlist access by ID"
+      parameters:
+        - name: "playlistaccess_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Playlist access updated successfully"
+    delete:
+      summary: "Delete playlist access by ID"
+      parameters:
+        - name: "playlistaccess_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Playlist access deleted successfully"
+
+  /playlistsong:
+    get:
+      summary: "Get all playlist songs"
+      responses:
+        200:
+          description: "List of playlist songs"
+    post:
+      summary: "Create a new playlist song"
+      parameters:
+        - in: body
+          name: playlist_song
+          description: "Playlist song object that needs to be added"
+          required: true
+          schema:
+            type: object
+            properties:
+              playlist_id:
+                type: string
+              song_id:
+                type: string
+      responses:
+        200:
+          description: "Playlist song created successfully"
+
+  /playlistsong/{playlistsong_id}:
+    get:
+      summary: "Get playlist song by ID"
+      parameters:
+        - name: "playlistsong_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Playlist song details"
+    put:
+      summary: "Update playlist song by ID"
+      parameters:
+        - name: "playlistsong_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Playlist song updated successfully"
+    delete:
+      summary: "Delete playlist song by ID"
+      parameters:
+        - name: "playlistsong_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Playlist song deleted successfully"
+
+  /song:
+    get:
+      summary: "Get all songs"
+      responses:
+        200:
+          description: "List of songs"
+    post:
+      summary: "Create a new song"
+      parameters:
+        - in: body
+          name: song
+          description: "Song object that needs to be added"
+          required: true
+          schema:
+            type: object
+            properties:
+              playlist_id:
+                type: string
+      responses:
+        200:
+          description: "Song created successfully"
+
+  /song/{song_id}:
+    get:
+      summary: "Get a song by ID"
+      parameters:
+        - name: "song_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Song details"
+    put:
+      summary: "Update a song by ID"
+      parameters:
+        - name: "song_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Song updated successfully"
+    delete:
+      summary: "Delete a song by ID"
+      parameters:
+        - name: "song_id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Song deleted successfully"
